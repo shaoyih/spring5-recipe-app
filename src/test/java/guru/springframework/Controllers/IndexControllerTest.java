@@ -1,11 +1,16 @@
 package guru.springframework.Controllers;
 
 import guru.springframework.Services.RecipeService;
+import guru.springframework.domain.Recipe;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.ui.Model;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
@@ -24,11 +29,52 @@ public class IndexControllerTest {
         MockitoAnnotations.initMocks(this);
         indexController=new IndexController(recipeService);
     }
+    /*
     @Test
-    public void getIndexPage() {
+    public void getIndexPage() throws  Exception{
+
+        //Given
+        Set<Recipe> recipes= new HashSet<>();
+        recipes.add(new Recipe());
+        recipes.add(new Recipe());
+        when(recipeService.getRecipe()).thenReturn(recipes);
+        ArgumentCaptor<Set<Recipe>> argumentCaptor = ArgumentCaptor.forClass(Set.class);
+
+
+
+        //when
         String result=indexController.getIndexPage(model);
+
+        //then
         assertEquals("index",result);
         verify(model,times(1)).addAttribute(eq("recipes"),anySet());
         verify(recipeService,times(1)).getRecipe();
+        Set<Recipe> set =argumentCaptor.getValue();
+
+
+    }*/
+    @Test
+    public void getIndexPage() throws Exception {
+
+        //given
+        Set<Recipe> recipes = new HashSet<>();
+        recipes.add(new Recipe());
+        Recipe recipe=new Recipe();
+        recipe.setCookeTime(11);
+        recipes.add(recipe);
+
+        when(recipeService.getRecipe()).thenReturn(recipes);
+        ArgumentCaptor<Set<Recipe>> argumentCaptor = ArgumentCaptor.forClass(Set.class);
+
+        //when
+        String viewName = indexController.getIndexPage(model);
+
+
+        //then
+        assertEquals("index", viewName);
+        verify(recipeService, times(1)).getRecipe();
+        verify(model, times(1)).addAttribute(eq("recipes"), argumentCaptor.capture());
+        Set<Recipe> setInController = argumentCaptor.getValue();
+        assertEquals(2, setInController.size());
     }
 }
