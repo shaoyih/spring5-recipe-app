@@ -95,7 +95,7 @@ public class RecipeBootStrap implements ApplicationListener<ContextRefreshedEven
         Recipe xiHongShi_ChaoJiDan=new Recipe();
         xiHongShi_ChaoJiDan.setDescription("完美的家常菜");
         xiHongShi_ChaoJiDan.setPrepTime(10);
-        xiHongShi_ChaoJiDan.setCookeTime(10);
+        xiHongShi_ChaoJiDan.setCookTime(10);
         xiHongShi_ChaoJiDan.setDifficulty(Difficulty.EASY);
 
         xiHongShi_ChaoJiDan.setDirections("1.有个厨房\n 2.有点食材\n 3.会用百度\n 4.自行百度");
@@ -116,7 +116,7 @@ public class RecipeBootStrap implements ApplicationListener<ContextRefreshedEven
         xiao_chao_rou.setServings(5);
         xiao_chao_rou.setDescription("我好饿");
         xiao_chao_rou.setPrepTime(11);
-        xiao_chao_rou.setCookeTime(0);
+        xiao_chao_rou.setCookTime(0);
         xiao_chao_rou.setDifficulty(Difficulty.HARD);
 
         xiao_chao_rou.setDirections("1.有个厨房ba\n 2.有点食材\n 3.会用百度\n 4.自行百度");
