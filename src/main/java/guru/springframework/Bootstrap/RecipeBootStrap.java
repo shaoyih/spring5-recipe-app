@@ -108,7 +108,12 @@ public class RecipeBootStrap implements ApplicationListener<ContextRefreshedEven
         xiHongShi_ChaoJiDan.getCategories().add(americanCategory);
         xiHongShi_ChaoJiDan.getCategories().add(mexicanCategory);
 
+        xiHongShi_ChaoJiDan.setUrl("www.baidu.com");
+        xiHongShi_ChaoJiDan.setServings(4);
+
         Recipe xiao_chao_rou=new Recipe();
+        xiao_chao_rou.setUrl("www.baidu.com");
+        xiao_chao_rou.setServings(5);
         xiao_chao_rou.setDescription("我好饿");
         xiao_chao_rou.setPrepTime(11);
         xiao_chao_rou.setCookeTime(0);
