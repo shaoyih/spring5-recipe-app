@@ -82,6 +82,9 @@
                 <div class="card text-white bg-dark ">
                     <div class="panel-heading">
                         <h1 class="panel-title" >Ingredients</h1>
+                        <div class="col-md-1">
+                            <a class="btn btn-default" href="#" th:href="@{'/recipe/ingredients/' + ${recipe.id}}" role="button">View</a>
+                        </div>
                     </div>
                     <div class="panel-body">
                         <div class="row">
