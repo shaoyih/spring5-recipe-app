@@ -2,6 +2,7 @@ package guru.springframework.Services;
 
 import guru.springframework.Converters.RecipeCommandToRecipe;
 import guru.springframework.Converters.RecipeToRecipeCommand;
+import guru.springframework.Exceptions.NotFoundException;
 import guru.springframework.Repositories.RecipeRepository;
 import guru.springframework.commands.RecipeCommand;
 import guru.springframework.domain.Recipe;
@@ -37,7 +38,7 @@ public class RecipeServiceImpl implements RecipeService {
     public Recipe findById(Long l){
        Optional<Recipe> recipe=recipeRepository.findById(l);
        if(!recipe.isPresent()){
-           throw new RuntimeException("Recipe Not Found!");
+           throw new NotFoundException("Recipe Not Found"+l.toString());
 
        }
        return recipe.get();
