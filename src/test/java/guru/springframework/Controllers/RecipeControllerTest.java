@@ -97,7 +97,8 @@ public class RecipeControllerTest {
         mockMvc.perform(post("/recipe")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .param("id", "")
-                .param("description", "some string")
+                .param("description", " asdf")
+                .param("directions", "haha")
         )
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/recipe/show/2"));
@@ -125,11 +126,8 @@ public class RecipeControllerTest {
         verify(recipeService, times(1)).deleteById(anyLong());
     }
 
-    @Test
-    public void getRecipeById_throws_NumberFormatException_when_id_is_not_a_number() throws Exception{
-        mockMvc.perform(get("recipe/show/asdf"))
-                .andExpect(status().isBadRequest())
-                .andExpect(view().name("400error"));
-    }
+
+
+
 
 }
